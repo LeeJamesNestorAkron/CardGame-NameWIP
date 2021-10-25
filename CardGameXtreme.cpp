@@ -4,67 +4,27 @@
 
 
 #include <iostream>
-#include <string>
+#include "DeckOfCards.h"
+
+int it = 0;
 
 
-
-class deckList {
-private:
-    struct cardNode{
-        std::string suite;
-    int number;
-    struct cardNode* next;
-
-    };
-
-    cardNode* head;
-    public:
-        deckList();
-        ~deckList();
-
-        void setDeck();
-        void addCard(std::string cardSuite, int number);
-};
 int main()
 {
-    std::cout << "Hello World!\n";
-}
-
-deckList::deckList() {
-    head = nullptr;
-}
-
-void deckList::setDeck() {
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 13; j++) {
+    deckList PlayingCards;
+    PlayingCards.setDeck();
+    PlayingCards.fingerDeck();
+  
+   while(1){
+       it++;
+        PlayingCards.shuffleDeck();
+        PlayingCards.fingerDeck();
+       
         
-        }
     }
-
-    
-
+   
 }
 
 
-void deckList::addCard(std::string cardSuite, int number) {
-    cardNode* newNode;
-    cardNode* nodePtr;
-
-    newNode = new cardNode;
-    newNode->suite = cardSuite;
-    newNode->number = number;
-    newNode->next = nullptr;
-    if (!head) {
-        head = newNode;
-    }
-    else {
-
-        nodePtr = head;
-        while (nodePtr->next)
-            nodePtr = nodePtr->next;
-
-        nodePtr->next = newNode;
-    }
-}
 
 
